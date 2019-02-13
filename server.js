@@ -3,7 +3,7 @@ const express = require('express'), http = require('http'), path = require('path
 const app = express();
 var enforce = require('express-sslify');
 
-app.use(enforce.HTTPS(trustProtoHeader: true));
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 app.use(express.static(__dirname+'/dist'));
 
 app.listen(process.env.PORT||4200);
