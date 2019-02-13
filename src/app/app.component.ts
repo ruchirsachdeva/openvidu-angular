@@ -98,6 +98,17 @@ export class AppComponent implements OnDestroy {
             insertMode: 'APPEND',   // How the video is inserted in the target element 'video-container'
             mirror: false           // Whether to mirror your local video or not
           });
+		  
+		   publisher.on('accessAllowed', () => {
+                console.warn('CAMERA ACCESS ALLOWED!');
+            });
+           publisher.on('accessDenied', () => {
+                console.warn('CAMERA ACCESS DENIED!');
+            });
+           publisher.on('streamCreated', (event: StreamEvent) => {
+                console.warn('STREAM CREATED BY PUBLISHER!');
+                console.warn(event.stream);
+            });
 
           // --- 6) Publish your stream ---
 
